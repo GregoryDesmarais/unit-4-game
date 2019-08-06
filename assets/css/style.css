@@ -2,8 +2,8 @@ img{
     width: 300px;
 }
 
-.charPanel, .charName, .charHP{
-    padding: 2%;
+.charName, .charHP{
+    padding: 3%;
     text-align: center;
 }
 
@@ -11,4 +11,37 @@ img{
     float:left;
     border: solid lime 2px;
     border-collapse: collapse;
+    background-color: white;
 }
+.charPic{
+
+    margin: 0 20px;
+}
+
+.gameTitle{
+    text-align: center;
+    color: white;
+    font-size: 40pt;
+    padding: 1% 0;
+}
+
+body{
+    background-image: url(../images/back.jpg);
+}
+.text-box{
+    color: white;
+    font-size: 25pt;
+    padding: 1%;
+}
+.charSelect::after,.enemySelect::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .enemy{
+      background-color: red;
+  }
+  .activeEnemy{
+      background-color:black;
+      color: white;
+  }

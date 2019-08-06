@@ -1,5 +1,5 @@
 var charStats = {
-    lukeSky:{
+    lukeSky: {
         name: "Luke Skywalker",
         baseAtk: 6,
         curAtk: 6,
@@ -26,6 +26,18 @@ var charStats = {
 
 };
 
-$(function(){
+function selectChar() {
+    if ($('.player').length === 0) {
+        $(this).addClass("player");
+        $('.charPanel:not(".player")').detach().appendTo(".enemySelect").addClass("enemy");
+    }
 
+    else if($(".player").length > 0 && $('.activeEnemy').length === 0)
+    {
+        $(this).removeClass("enemy").addClass("activeEnemy").detach().appendTo(".curEnemy");
+    }
+}
+
+$(function () {
+    $(".charPanel").click(selectChar);
 });
