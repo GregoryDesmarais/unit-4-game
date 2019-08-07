@@ -23,7 +23,6 @@ var charStats = {
         curAtk: 7,
         hp: 180
     }
-
 };
 
 function selectChar() {
@@ -38,6 +37,21 @@ function selectChar() {
     }
 }
 
+function displayHP()
+{
+    $(".charPanel").each(
+        function()
+        {
+            var name = $(this).attr("value");
+			$(this).find(".charHP").text("HP: "+ charStats[name].hp);
+        }
+    )
+}
+
 $(function () {
     $(".charPanel").click(selectChar);
+    // $(".charPanel").click(function()
+    // {
+    //     console.log($(this).attr("value"));
+    // });
 });
