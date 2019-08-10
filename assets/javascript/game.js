@@ -25,10 +25,25 @@ var charStats = {
     }
 };
 
+function createCharPanel()
+{
+    var chars = Object.keys(charStats);
+    chars.forEach(function(key){
+        $(".charSelect").append("<div class='charPanel' value='"+key+"'>"+
+        "<div class='charName'>"+charStats[key].name+"</div>"+
+        "<div class='charPic'>"+
+        "<img src='assets/images/"+key+".jpg'></div>"+
+        "<div class='charHP'></div>");
+    });
+    $(".charPanel").click(selectChar);
+    displayHP();
+}
+
 function selectChar() {
     if ($('.player').length === 0) {
-        $(this).addClass("player");
+        $(this).addClass("player").detach().appendTo(".selectedChar");
         $('.charPanel:not(".player")').detach().appendTo(".enemySelect").addClass("enemy");
+        $(".enemySelect > .hidden").removeClass("hidden");
     }
 
     else if($(".player").length > 0 && $('.activeEnemy').length === 0)
@@ -53,8 +68,8 @@ function performAttack()
 
 }
 $(function () {
-    $(".charPanel").click(selectChar);
-    displayHP();
+    
+    createCharPanel();
     // $(".charPanel").click(function()
     // {
     //     console.log($(this).attr("value"));
