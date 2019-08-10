@@ -48,8 +48,13 @@ function displayHP()
     )
 }
 
+function performAttack()
+{
+
+}
 $(function () {
     $(".charPanel").click(selectChar);
+    displayHP();
     // $(".charPanel").click(function()
     // {
     //     console.log($(this).attr("value"));
