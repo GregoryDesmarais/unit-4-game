@@ -1,14 +1,14 @@
 var charStats = {
     lukeSky: {
         name: "Luke Skywalker",
-        baseAtk: 5,
-        curAtk: 5,
-        hp: 100
+        baseAtk: 9,
+        curAtk: 9,
+        hp: 130
     },
     obiWan: {
         name: "Obi-Wan Kenobi",
-        baseAtk: 8,
-        curAtk: 8,
+        baseAtk: 10,
+        curAtk: 10,
         hp: 120
     },
     darthSidious: {
@@ -21,7 +21,7 @@ var charStats = {
         name: "Darth Maul",
         baseAtk: 25,
         curAtk: 25,
-        hp: 180
+        hp: 170
     }
 };
 
@@ -42,15 +42,18 @@ function createCharPanel() {
 }
 
 function selectChar() {
-    if ($('.player').length === 0) {
+    if ($(this).hasClass("player")) {
+        return false;
+    }
+    else if ($('.player').length === 0) {
         $(this).addClass("player").detach().appendTo(".selectedChar");
         $("span.left").text("Selected Character");
         player = $(".player").attr("value");
         $('.charPanel:not(".player")').detach().appendTo(".enemySelect").addClass("enemy");
         $(".enemySelect > .hidden").removeClass("hidden");
     }
-
-    else if ($(".player").length > 0 && $('.activeEnemy').length === 0) {
+    else if ($(".player").length > 0 &&
+        $('.activeEnemy').length === 0) {
         $(this).removeClass("enemy").addClass("activeEnemy").detach().appendTo(".curEnemy");
         enemy = $(".activeEnemy").attr("value");
         $(".fight, .battleInfo, span.right").removeClass("hidden");
@@ -73,11 +76,11 @@ function performAttack(player, enemy) {
         if ($(".enemySelect > .charPanel").length === 0) {
             $(".battleInfo").html(player.name + " Defeats " + enemy.name +
                 "<br>You win!!");
-                $(".reset").removeClass("hidden");
+            $(".reset").removeClass("hidden");
             $(".fight").addClass("hidden");
         } else {
             $(".battleInfo").html(player.name + " Defeats " + enemy.name +
-            "<br>Select another opponent!");
+                "<br>Select another opponent!");
         }
         $(".activeEnemy").remove();
         console.log(player.curAtk);
@@ -85,7 +88,7 @@ function performAttack(player, enemy) {
     }
     else {
         $(".battleInfo").html(player.name + " Attacks " + enemy.name +
-        " for " + player.curAtk + " damage!");
+            " for " + player.curAtk + " damage!");
         console.log(player.curAtk);
         player.curAtk += player.baseAtk;
         player.hp -= enemy.baseAtk;
@@ -98,7 +101,7 @@ function performAttack(player, enemy) {
         }
         else {
             $(".battleInfo").append("<br><br>" + enemy.name + " Attacks " + player.name +
-            " for " + enemy.curAtk + " damage!");
+                " for " + enemy.curAtk + " damage!");
         }
         displayHP();
     }
