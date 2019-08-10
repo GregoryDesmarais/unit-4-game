@@ -24,9 +24,6 @@ img{
     font-size: 40pt;
     padding: 1% 0;
 }
-.curEnemy{
-    float:right;
-}
 
 body{
     background-image: url(../images/back.jpg);
@@ -58,4 +55,17 @@ body{
   }
   .left{
       float:left;
+  }
+  .battleInfo{
+    float: left;
+    position: relative;
+    left: 15%;
+    background-color: white;
+    width: 30%;
+    height: 75px;
+    text-align: center;
+  }
+  .fight, .reset{
+    padding: 2%;
+    margin: 0 0 0 30%;
   }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Star Wars RPG</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -17,15 +17,17 @@
     <div class='charSelect'>
         <div class='text-box info'>
             <span class='text-box left'>Select your character:</span>
+            <button class='fight left hidden'>Attack!</button>
+            <button class='reset left hidden'>Reset</button>
             <span class='text-box right hidden'>Selected Enemy</span>
         </div>
-        <div class='selectedChar'></div>
-        <div class='selectedEnemy'></div>
-        <div class='curEnemy'></div>
+        <div class='selectedChar left'></div>
+        <div class='battleInfo hidden'></div>
+        <div class='curEnemy right'></div>
     </div>
     <br>
-    <div class='text-box hidden'>Enemies Avaiable to Attack</div>
     <div class='enemySelect'>
+        <div class='text-box hidden'>Enemies Avaiable to Attack</div>
     </div>
 </body>
 
