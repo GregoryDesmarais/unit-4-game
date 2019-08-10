@@ -1,14 +1,14 @@
 var charStats = {
     lukeSky: {
         name: "Luke Skywalker",
-        baseAtk: 6,
-        curAtk: 6,
+        baseAtk: 5,
+        curAtk: 5,
         hp: 100
     },
     obiWan: {
         name: "Obi-Wan Kenobi",
-        baseAtk: 4,
-        curAtk: 4,
+        baseAtk: 8,
+        curAtk: 8,
         hp: 120
     },
     darthSidious: {
@@ -73,32 +73,32 @@ function performAttack(player, enemy) {
         if ($(".enemySelect > .charPanel").length === 0) {
             $(".battleInfo").html(player.name + " Defeats " + enemy.name +
                 "<br>You win!!");
-            $(".reset").removeClass("hidden");
+                $(".reset").removeClass("hidden");
             $(".fight").addClass("hidden");
-        }else{
+        } else {
             $(".battleInfo").html(player.name + " Defeats " + enemy.name +
             "<br>Select another opponent!");
         }
         $(".activeEnemy").remove();
-        return false;
+        console.log(player.curAtk);
+        player.curAtk += player.baseAtk;
     }
     else {
         $(".battleInfo").html(player.name + " Attacks " + enemy.name +
-            " for " + player.curAtk + " damage!");
+        " for " + player.curAtk + " damage!");
+        console.log(player.curAtk);
+        player.curAtk += player.baseAtk;
         player.hp -= enemy.baseAtk;
-        if(player.hp <= 0)
-        {
+        if (player.hp <= 0) {
             player.hp = 0;
             $(".battleInfo").html(player.name + " has fallen in battle.<br>Try again!");
             $(".reset").removeClass("hidden");
             $(".fight").addClass("hidden");
             displayHP();
-            return false;
         }
-        else{
-            $(".battleInfo").append("<br><br>"+enemy.name + " Attacks " + player.name +
+        else {
+            $(".battleInfo").append("<br><br>" + enemy.name + " Attacks " + player.name +
             " for " + enemy.curAtk + " damage!");
-            player.curAtk += player.baseAtk;
         }
         displayHP();
     }
@@ -107,7 +107,7 @@ function performAttack(player, enemy) {
 $(function () {
 
     createCharPanel();
-    $(".reset").click(function(){
+    $(".reset").click(function () {
         location.reload();
     });
     $(".fight").click(function () {
