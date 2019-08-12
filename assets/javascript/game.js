@@ -30,7 +30,7 @@ var enemy;
 
 function createCharPanel() {
     var chars = Object.keys(charStats);
-    chars.forEach(function (key) {
+    chars.forEach(function(key) {
         $(".charSelect").append("<div class='charPanel' value='" + key + "'>" +
             "<div class='charName'>" + charStats[key].name + "</div>" +
             "<div class='charPic'>" +
@@ -44,15 +44,13 @@ function createCharPanel() {
 function selectChar() {
     if ($(this).hasClass("player")) {
         return false;
-    }
-    else if ($('.player').length === 0) {
+    } else if ($('.player').length === 0) {
         $(this).addClass("player").detach().appendTo(".selectedChar");
         $("span.left").text("Selected Character");
         player = $(".player").attr("value");
         $('.charPanel:not(".player")').detach().appendTo(".enemySelect").addClass("enemy");
         $(".enemySelect > .hidden").removeClass("hidden");
-    }
-    else if ($(".player").length > 0 &&
+    } else if ($(".player").length > 0 &&
         $('.activeEnemy').length === 0) {
         $(this).removeClass("enemy").addClass("activeEnemy").detach().appendTo(".curEnemy");
         enemy = $(".activeEnemy").attr("value");
@@ -63,7 +61,7 @@ function selectChar() {
 
 function displayHP() {
     $(".charPanel").each(
-        function () {
+        function() {
             var name = $(this).attr("value");
             $(this).find(".charHP").text("HP: " + charStats[name].hp);
         }
@@ -85,8 +83,7 @@ function performAttack(player, enemy) {
         $(".activeEnemy").remove();
         console.log(player.curAtk);
         player.curAtk += player.baseAtk;
-    }
-    else {
+    } else {
         $(".battleInfo").html(player.name + " Attacks " + enemy.name +
             " for " + player.curAtk + " damage!");
         console.log(player.curAtk);
@@ -98,8 +95,7 @@ function performAttack(player, enemy) {
             $(".reset").removeClass("hidden");
             $(".fight").addClass("hidden");
             displayHP();
-        }
-        else {
+        } else {
             $(".battleInfo").append("<br><br>" + enemy.name + " Attacks " + player.name +
                 " for " + enemy.curAtk + " damage!");
         }
@@ -107,13 +103,13 @@ function performAttack(player, enemy) {
     }
 
 }
-$(function () {
+$(function() {
 
     createCharPanel();
-    $(".reset").click(function () {
+    $(".reset").click(function() {
         location.reload();
     });
-    $(".fight").click(function () {
+    $(".fight").click(function() {
         if ($(".player, .activeEnemy").length !== 2) {
             return false;
         } else {
